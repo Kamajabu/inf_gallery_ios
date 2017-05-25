@@ -20,9 +20,8 @@ class FullScreenCollectionViewController: UIViewController, UICollectionViewData
 
     override func viewDidLoad() {
         super.viewDidLoad()
-              //self.collectionView?.scrollToItem(at: imageIndex!, at: .centeredHorizontally, animated: false)
+        self.collectionView?.scrollToItem(at: imageIndex!, at: .centeredHorizontally, animated: false)
         collectionView.reloadData()
-
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -33,7 +32,7 @@ class FullScreenCollectionViewController: UIViewController, UICollectionViewData
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FullScreenCollectionViewCell
 
         let imageView = UIImageView(frame: CGRect(origin: CGPoint(x: 0,y :0), size: CGSize(width: cell.frame.width, height: cell.frame.height)))
 

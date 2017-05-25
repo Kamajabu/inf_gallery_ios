@@ -77,8 +77,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let visibleCells = collectionView.visibleCells
         let sorted = visibleCells.sorted(){ $0.center.y < $1.center.y }
 
-//        sorted.map{ print(collectionView.indexPath(for: $0) ?? -1)}
-
         self.collectionView?.scrollToItem(at: collectionView.indexPath(for: sorted.last!)!,
                                           at: .bottom,
                                           animated: true)

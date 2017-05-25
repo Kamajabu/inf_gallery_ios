@@ -11,7 +11,7 @@ import UIKit
 protocol CollectionViewCellDelegate: class {
     func cellDelegateCloseController(sender: AnyObject)
 }
-class CollectionViewCell: UICollectionViewCell {
+class FullScreenCollectionViewCell: UICollectionViewCell {
 
     weak var closeDelegate: CollectionViewCellDelegate?
 
@@ -20,10 +20,5 @@ class CollectionViewCell: UICollectionViewCell {
     func setGalleryItem(_ item:GalleryItem) {
         itemImage.image = UIImage(named: item.itemImage)
     }
-
-//    @IBAction func backButtonDidTouch(_ sender: Any) {
-//        closeDelegate?.cellDelegateCloseController(sender: self)
-//    }
-
 }
 
