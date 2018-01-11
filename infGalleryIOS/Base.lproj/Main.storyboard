@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="YNT-XJ-n4C">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="YNT-XJ-n4C">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -79,7 +79,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="Fun-YU-sbq" id="xSz-hx-v3Y"/>
-                        <segue destination="ORm-Bi-76C" kind="presentation" identifier="fullscreenSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="59Y-ef-4ts"/>
+                        <segue destination="ORm-Bi-76C" kind="show" identifier="fullscreenSegue" id="59Y-ef-4ts"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fMd-2d-IMt" sceneMemberID="firstResponder"/>
@@ -109,7 +109,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="CollectionViewCell" id="4D1-SS-M7L" customClass="FullScreenCollectionViewCell" customModule="infGalleryIOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="40" width="416" height="657"/>
+                                        <rect key="frame" x="0.0" y="39.666666666666664" width="416" height="657"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="416" height="657"/>
@@ -140,7 +140,7 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oSA-HF-Sle">
-                                <rect key="frame" x="178" y="652" width="58" height="44"/>
+                                <rect key="frame" x="179" y="652" width="56" height="44"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="Back">
                                     <color key="titleColor" red="0.031132420524954796" green="0.19956761598587036" blue="0.99945694208145142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

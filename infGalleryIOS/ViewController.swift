@@ -8,32 +8,26 @@
 
 import UIKit
 
-
-
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-
     @IBOutlet var collectionView: UICollectionView!
 
     var galleryItems: [GalleryItem] = []
-    var selectedItem: IndexPath?
-    
-    // MARK: -
-    // MARK: - View Lifecycle
-    
+    var selectedItem: IndexPath = IndexPath(row: 0, section: 0)
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
         initGalleryItems()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         collectionView.reloadData()
 
-    NotificationCenter.default.addObserver(self, selector: #selector(ViewController.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(ViewController.rotated),
+                                           name: NSNotification.Name.UIDeviceOrientationDidChange,
+                                           object: nil)
     }
     
     fileprivate func initGalleryItems() {
-        
         var items = [GalleryItem]()
         let inputFile = Bundle.main.path(forResource: "items", ofType: "plist")
         
@@ -46,21 +40,20 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         galleryItems = items
     }
-    
-    // MARK: -
-    // MARK: - UICollectionViewDataSource
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
         return galleryItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GalleryItemCollectionViewCell", for: indexPath) as! GalleryItemCollectionViewCell
+        let cell = collectionView
+            .dequeueReusableCell(withReuseIdentifier: "GalleryItemCollectionViewCell",
+                                 for: indexPath) as! GalleryItemCollectionViewCell
         
         cell.setGalleryItem(galleryItems[indexPath.row])
+        cell.addHeroId("\(HeroConsts.heroCellIdName)\(indexPath.row)")
         return cell
-        
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -73,7 +66,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                                    targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         perform(#selector(self.actionOnFinishedScrolling), with: nil, afterDelay: Double(velocity.y))
     }
-    func actionOnFinishedScrolling() {
+
+    @objc func actionOnFinishedScrolling() {
         let visibleCells = collectionView.visibleCells
         let sorted = visibleCells.sorted(){ $0.center.y < $1.center.y }
 
@@ -83,24 +77,25 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
 
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
 
         guard let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout else {
             return CGSize()
         }
 
-        let heightAvailbleForAllItems =  (collectionView.frame.height - flowLayout.sectionInset.top - flowLayout.sectionInset.bottom)
+        let heightAvailbleForAllItems =  (collectionView.frame.height -
+            flowLayout.sectionInset.top - flowLayout.sectionInset.bottom)
 
-        let widthAvailbleForAllItems =  (collectionView.frame.width - flowLayout.sectionInset.left - flowLayout.sectionInset.right)
+        let widthAvailbleForAllItems =  (collectionView.frame.width -
+            flowLayout.sectionInset.left - flowLayout.sectionInset.right)
 
         let widthForOneItem = widthAvailbleForAllItems / 2 - flowLayout.minimumInteritemSpacing
         let heightForOneItem = heightAvailbleForAllItems / 4 - flowLayout.minimumInteritemSpacing
 
         return CGSize(width: CGFloat(widthForOneItem), height:  CGFloat(heightForOneItem))
-
-
     }
-
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "fullscreenSegue" {
@@ -110,14 +105,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }
     }
 
-    func rotated() {
+    @objc func rotated() {
         collectionView.reloadData()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self)
     }
-
-
 }
 

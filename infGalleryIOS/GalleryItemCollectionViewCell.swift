@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Hero
 
 class GalleryItemCollectionViewCell: UICollectionViewCell {
     
@@ -15,5 +16,8 @@ class GalleryItemCollectionViewCell: UICollectionViewCell {
     func setGalleryItem(_ item:GalleryItem) {
         itemImageView.image = UIImage(named: item.itemImage)
     }
-    
+
+    func addHeroId(_ id: String) {
+        itemImageView.heroID = id
+    }
 }

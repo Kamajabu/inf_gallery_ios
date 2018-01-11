@@ -7,18 +7,22 @@
 //
 
 import UIKit
+import Hero
 
 protocol CollectionViewCellDelegate: class {
     func cellDelegateCloseController(sender: AnyObject)
 }
+
 class FullScreenCollectionViewCell: UICollectionViewCell {
-
     weak var closeDelegate: CollectionViewCellDelegate?
-
     @IBOutlet weak var itemImage: UIImageView!
 
     func setGalleryItem(_ item:GalleryItem) {
         itemImage.image = UIImage(named: item.itemImage)
+    }
+
+    func addHeroId(_ id: String) {
+        itemImage.heroID = id
     }
 }
 
